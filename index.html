@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://racrut0.github.io/">
   <link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml">
   <link rel="preload" href="assets/golos-text.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <script src="script.js?v=3" defer></script>
 </head>
 <body>
@@ -34,7 +34,7 @@
       <div class="showcase" aria-label="Примеры работ">
         <div class="showcase-tabs" role="tablist" aria-label="Выбрать пример работы">
           <button id="tab-bot" type="button" role="tab" aria-selected="true" aria-controls="preview-bot" tabindex="0" data-preview="bot">Telegram-бот</button>
-          <button id="tab-catalogs" type="button" role="tab" aria-selected="false" aria-controls="preview-catalogs" tabindex="-1" data-preview="catalogs">Каталоги</button>
+          <button id="tab-catalogs" type="button" role="tab" aria-selected="false" aria-controls="preview-catalogs" tabindex="-1" data-preview="catalogs">Бумажные каталоги</button>
         </div>
         <div class="preview-panel" id="preview-bot" role="tabpanel" aria-labelledby="tab-bot" tabindex="0">
           <div class="bot-stage"><img class="bot-screen" src="assets/iidouble-desktop.png" alt="IIDOUBLE на компьютере: меню, диалог и профиль" width="1280" height="720" fetchpriority="high"><img class="bot-phone" src="assets/iidouble-mobile.png" alt="IIDOUBLE на телефоне" width="390" height="844"></div>
@@ -42,7 +42,7 @@
         </div>
         <div class="preview-panel" id="preview-catalogs" role="tabpanel" aria-labelledby="tab-catalogs" tabindex="0" hidden>
           <div class="paper-stage"><img src="assets/catalogs/grass-cover.jpg" alt="Каталог GRASS" width="983" height="1390" loading="lazy"><img src="assets/catalogs/detail-cover.jpg" alt="Каталог DETAIL" width="983" height="1390" loading="lazy"><img src="assets/catalogs/shine-systems-cover.jpg" alt="Каталог Shine Systems" width="983" height="1390" loading="lazy"></div>
-          <div class="preview-caption"><div><strong>Пять каталогов продукции</strong><span>Автохимия, ароматы и автопринадлежности</span></div><a href="catalogs/">Смотреть PDF</a></div>
+          <div class="preview-caption"><div><strong>Бумажные каталоги</strong><span>Автохимия, ароматы и автопринадлежности</span></div><a href="catalogs/">Смотреть PDF</a></div>
         </div>
 
       </div>
@@ -55,20 +55,17 @@
         <button class="project-visual bot-visual" type="button" data-case-open aria-haspopup="dialog" aria-controls="project-dialog" aria-label="Рассмотреть интерфейс IIDOUBLE"><img class="project-desktop" src="assets/iidouble-desktop.png" alt="Экран диалога IIDOUBLE на компьютере" width="1280" height="720" loading="lazy"><img class="project-phone" src="assets/iidouble-mobile.png" alt="Тестовый диалог в мобильной версии IIDOUBLE" width="390" height="844" loading="lazy"><span class="visual-action">Увеличить изображения</span></button>
       </article>
 
-      <article class="project project-catalogs" aria-labelledby="catalogs-title">
-        <a class="project-visual catalog-visual" href="catalogs/" aria-label="Открыть каталоги GRASS, DETAIL и Shine Systems"><img src="assets/catalogs/grass-cover.jpg" alt="Обложка GRASS" width="983" height="1390" loading="lazy"><img src="assets/catalogs/detail-cover.jpg" alt="Обложка DETAIL" width="983" height="1390" loading="lazy"><img src="assets/catalogs/shine-systems-cover.jpg" alt="Обложка Shine Systems" width="983" height="1390" loading="lazy"><span class="visual-action">Посмотреть страницы</span></a>
-        <div class="project-copy"><span class="project-kind">Готовые PDF</span><h3 id="catalogs-title">Каталоги автохимии</h3><p class="project-subtitle">GRASS, DETAIL и Shine Systems</p><p>Три каталога продукции: от обложки и разделов до карточек товаров с фотографиями, описаниями, артикулами и ценами.</p><dl class="project-details"><div><dt>Задача</dt><dd>Привести ассортимент к единому виду и подготовить файл для просмотра и отправки покупателям.</dd></div><div><dt>Результат</dt><dd>Три полных каталога. Можно рассмотреть страницы и открыть каждый PDF.</dd></div></dl><a class="button button-primary" href="catalogs/">Открыть каталоги</a><div class="catalog-shortcuts" aria-label="Перейти к каталогу"><a href="catalogs/#grass">GRASS</a><a href="catalogs/#detail">DETAIL</a><a href="catalogs/#shine-systems">Shine Systems</a></div></div>
+      <article class="project project-catalogs" id="paper-catalogs" aria-labelledby="catalogs-title">
+        <a class="project-visual catalog-visual catalog-collection-visual" href="catalogs/" aria-label="Открыть все пять бумажных каталогов"><img src="assets/catalogs/avto-aromas-cover.jpg" alt="Обложка каталога: Ароматы для автомобилей" width="983" height="1390" loading="lazy"><img src="assets/catalogs/avto-accessories-cover.jpg" alt="Обложка каталога: Автопринадлежности" width="983" height="1390" loading="lazy"><img src="assets/catalogs/grass-cover.jpg" alt="Обложка каталога: GRASS" width="983" height="1390" loading="lazy"><img src="assets/catalogs/detail-cover.jpg" alt="Обложка каталога: DETAIL" width="983" height="1390" loading="lazy"><img src="assets/catalogs/shine-systems-cover.jpg" alt="Обложка каталога: Shine Systems" width="983" height="1390" loading="lazy"><span class="visual-action">Посмотреть все каталоги</span></a>
+        <div class="project-copy"><span class="project-kind">Готовые PDF</span><h3 id="catalogs-title">Бумажные каталоги</h3><p class="project-subtitle">AVTO G-ASH, GRASS, DETAIL и Shine Systems</p><p>Пять каталогов: ароматы для автомобилей, автопринадлежности и автохимия. Обложки, разделы и товарные карточки с фотографиями, описаниями и ценами.</p><dl class="project-details"><div><dt>Задача</dt><dd>Привести ассортимент к единому виду и оформить понятные каталоги продукции.</dd></div><div><dt>Результат</dt><dd>Пять полных каталогов. Обложки, примеры страниц и PDF собраны в одном разделе.</dd></div></dl><a class="button button-primary" href="catalogs/">Открыть каталоги</a><div class="catalog-shortcuts" aria-label="Перейти к каталогу"><a href="catalogs/#avto-aromas">Ароматы</a><a href="catalogs/#avto-accessories">Автопринадлежности</a><a href="catalogs/#grass">GRASS</a><a href="catalogs/#detail">DETAIL</a><a href="catalogs/#shine-systems">Shine Systems</a></div></div>
       </article>
 
-      <div class="more-catalogs">
-        <article class="catalog-card"><a class="catalog-card-image aroma-card" href="catalogs/#avto-aromas" aria-label="Посмотреть каталог ароматов для автомобилей"><img src="assets/catalogs/avto-aromas-cover.jpg" alt="Обложка каталога ароматов AVTO G-ASH" width="983" height="1390" loading="lazy"><img src="assets/catalogs/avto-aromas-page.jpg" alt="Пример товарной страницы каталога ароматов" width="983" height="1390" loading="lazy"></a><h3>Ароматы для автомобилей</h3><p>AVTO G-ASH. Каталог на 41 страницу и отдельная обложка.</p><a class="inline-link" href="catalogs/#avto-aromas">Посмотреть каталог ароматов</a></article>
-        <article class="catalog-card"><a class="catalog-card-image accessories-card" href="catalogs/#avto-accessories" aria-label="Посмотреть каталог автопринадлежностей"><img src="assets/catalogs/avto-accessories-cover.jpg" alt="Обложка каталога автопринадлежностей AVTO G-ASH" width="983" height="1390" loading="lazy"><img src="assets/catalogs/avto-accessories-page.jpg" alt="Пример товарной страницы каталога автопринадлежностей" width="983" height="1390" loading="lazy"></a><h3>Автопринадлежности</h3><p>AVTO G-ASH. Каталог на 62 страницы и отдельная обложка.</p><a class="inline-link" href="catalogs/#avto-accessories">Посмотреть каталог автопринадлежностей</a></article>
-      </div>
+
     </section>
 
     <section class="services shell" id="services" aria-labelledby="services-title">
       <div class="section-heading"><h2 id="services-title">Чем могу помочь</h2><p>Начнём с конкретной задачи<br>и согласованного объёма.</p></div>
-      <div class="service-list"><div><h3>Создание сайтов</h3><p>Сайты-визитки, лендинги и страницы услуг: структура, оформление и адаптация под телефон.</p></div><div><h3>Доработка сайтов</h3><p>Адаптация под телефон, обновление блоков, оформление формы или небольшой интерактив.</p></div><div><h3>Telegram-бот</h3><p>Простой сценарий: меню, вопросы и ответы, сбор заявок. Возможности согласуем до начала работы.</p></div><div><h3>Товарный каталог</h3><p>Оформление ассортимента в PDF: фотографии, описания, характеристики и цены в одной системе.</p></div></div>
+      <div class="service-list"><div><h3>Создание сайтов</h3><p>Сайты-визитки, лендинги и страницы услуг: структура, оформление и адаптация под телефон.</p></div><div><h3>Доработка сайтов</h3><p>Адаптация под телефон, обновление блоков, оформление формы или небольшой интерактив.</p></div><div><h3>Telegram-бот</h3><p>Простой сценарий: меню, вопросы и ответы, сбор заявок. Возможности согласуем до начала работы.</p></div><div><h3>Бумажные каталоги</h3><p>Оформление ассортимента в PDF: фотографии, описания, характеристики и цены в одной системе.</p></div></div>
     </section>
 
     <section class="about shell" id="about" aria-labelledby="about-title">
