@@ -1,12 +1,49 @@
-const peekIdeas=['Сделай паузу на чашку любимого чая.','Напиши человеку, которому давно хотел написать.','Найди десять минут для прогулки без телефона.','Включи музыку, которая напоминает о хорошем.','Освободи небольшой уголок рабочего стола.','Запиши одну вещь, за которую благодарен этому дню.'];
-document.querySelectorAll('[data-peek]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-peek]').forEach(item=>item.classList.remove('is-open'));button.classList.add('is-open');document.querySelector('#peek-result').textContent=peekIdeas[Number(button.dataset.peek)-1];}));
-const caseDialog=document.querySelector('#case-dialog');
-let caseTrigger=null;
-const caseContent={
-  twin:{status:'Личный проект в разработке',body:`<h2 id="case-title">IIDOUBLE — ИИ-двойник в Telegram</h2><p>Бот и Mini App, который учится отвечать в манере владельца на основе профиля, примеров диалогов и подтверждённых исправлений.</p><div class="twin-gallery"><figure><a href="assets/iidouble-desktop.png" target="_blank" rel="noopener"><img src="assets/iidouble-desktop.png" alt="IIDOUBLE на компьютере: навигация, диалог и панель профиля" width="1280" height="720"></a><figcaption>Интерфейс на компьютере</figcaption></figure><figure><a href="assets/iidouble-mobile.png" target="_blank" rel="noopener"><img src="assets/iidouble-mobile.png" alt="IIDOUBLE на телефоне: тестовый диалог с оценкой ответа" width="390" height="844"></a><figcaption>Интерфейс на телефоне</figcaption></figure></div><p class="case-note">Реальный интерфейс на искусственных тестовых данных. Изображения можно открыть в полном размере.</p><h3>Задача проекта</h3><p>Собрать удобный интерфейс для общения, настройки профиля и проверки примеров, на которых учится бот.</p><h3>Что реализовано</h3><ul><li>Telegram-бот и адаптивный Mini App: меню на компьютере и мобильный диалог.</li><li>Профиль, вопросы и ответы, правила речи и сохранение исправлений.</li><li>Импорт переписки с выбором автора и предпросмотром перед подтверждением.</li><li>Разделы собеседников и проверки сходства ответов.</li><li>Хранение данных в SQLite и ограничения расходов на API.</li></ul><h3>Моё участие</h3><p>Постановка задач, разработка и доработка с ИИ-инструментами, запуск и проверка поведения. Личный проект продолжает развиваться.</p><div class="tags"><span>Python</span><span>FastAPI</span><span>SQLite</span><span>HTML / CSS / JS</span><span>Telegram Bot API</span></div><a class="button dark" href="https://github.com/racrut0/IIDOUBLE-TG/tree/IIDouble%2F%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank" rel="noopener">Код проекта с новым дизайном ↗</a>`}
-};
-document.querySelectorAll('[data-case]').forEach(button=>button.addEventListener('click',()=>{const content=caseContent[button.dataset.case];if(!content)return;caseTrigger=button;document.querySelector('#case-status').textContent=content.status;document.querySelector('#case-body').innerHTML=content.body;caseDialog.showModal();caseDialog.scrollTop=0;document.body.classList.add('modal-open');document.querySelector('#close-case').focus();}));
-function closeCase(){caseDialog.close();}
-document.querySelector('#close-case').addEventListener('click',closeCase);
-caseDialog.addEventListener('click',event=>{if(event.target!==caseDialog)return;const rect=caseDialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)closeCase();});
-caseDialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');caseTrigger?.focus();});
+const tabs = [...document.querySelectorAll('[data-preview]')];
+const panels = [...document.querySelectorAll('.preview-panel')];
+
+function selectPreview(tab, moveFocus = false) {
+  tabs.forEach(item => {
+    const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+  });
+  panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+  if (moveFocus) tab.focus();
+}
+
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectPreview(tab));
+  tab.addEventListener('keydown', event => {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = tabs.length - 1;
+    if (next !== undefined) {
+      event.preventDefault();
+      selectPreview(tabs[next], true);
+    }
+  });
+});
+
+const projectDialog = document.querySelector('#project-dialog');
+let dialogTrigger;
+document.querySelectorAll('[data-case-open]').forEach(button => {
+  button.addEventListener('click', () => {
+    dialogTrigger = button;
+    projectDialog.showModal();
+    projectDialog.scrollTop = 0;
+    document.body.classList.add('dialog-open');
+    projectDialog.querySelector('.dialog-close').focus();
+  });
+});
+projectDialog.querySelector('.dialog-close').addEventListener('click', () => projectDialog.close());
+projectDialog.addEventListener('click', event => {
+  if (event.target !== projectDialog) return;
+  const rect = projectDialog.getBoundingClientRect();
+  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) projectDialog.close();
+});
+projectDialog.addEventListener('close', () => {
+  document.body.classList.remove('dialog-open');
+  dialogTrigger?.focus({preventScroll:true});
+});
