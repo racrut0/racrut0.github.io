@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Демонстрация интерфейса IIDOUBLE: примеры диалогов, выбор собеседника и исправление ответа.">
+  <meta name="theme-color" content="#1e1f28">
+  <title>IIDOUBLE — демонстрация интерфейса</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="demo.css?v=1">
+  <script src="demo.js?v=1" defer></script>
+</head>
+<body>
+  <svg class="svg-library" aria-hidden="true"><defs><symbol id="twin-mark" viewBox="0 0 42 42"><path d="M12 6h11a8 8 0 0 1 8 8v8a8 8 0 0 1-8 8H13l-7.5 5.5V14A8 8 0 0 1 12 6Z" fill="#252d3c" stroke="#8aadf4" stroke-width="1.5"/><path d="M17 11h11a8 8 0 0 1 8 8v16l-8-6H17a8 8 0 0 1-8-8v-2a8 8 0 0 1 8-8Z" fill="#303349" stroke="#b7bdf8" stroke-width="1.5"/><path d="M18 19h10M18 23h6" fill="none" stroke="#b7bdf8" stroke-width="1.5" stroke-linecap="round"/></symbol></defs></svg>
+  <div class="demo-banner"><span>Демонстрация интерфейса</span><span>Готовые примеры ответов</span><a href="../#iidouble">В портфолио</a></div>
+  <div class="demo-app">
+    <aside class="demo-sidebar">
+      <a class="brand" href="../projects/iidouble/"><svg aria-hidden="true"><use href="#twin-mark"/></svg><span><strong>IIDouble</strong><small>Твой цифровой двойник</small></span></a>
+      <nav aria-label="Разделы демонстрации"><button data-view="chat" aria-current="page"><span aria-hidden="true">↔</span>Диалог</button><button data-view="people"><span aria-hidden="true">◎</span>Собеседники</button><button data-view="rules"><span aria-hidden="true">≡</span>Правила речи</button></nav>
+      <div class="sidebar-note"><strong>Твоя манера общения</strong><p>Слова, реакции и правила, которые ты задаёшь сам.</p><a href="../projects/iidouble/">Подробнее о проекте</a></div>
+    </aside>
+    <main class="demo-main">
+      <header class="workspace-header"><div><span class="mobile-brand">IIDouble</span><h1 id="viewTitle">Диалог</h1></div><div class="workspace-state"><span class="status-dot"></span><span id="status">Готов к диалогу</span><button id="personSwitch" class="person-switch">Друг <span aria-hidden="true">⌄</span></button></div></header>
+      <div class="workspace">
+        <section id="view-chat" class="view active" aria-label="Диалог с двойником">
+          <div class="chat-content">
+            <div class="thread" aria-live="polite">
+              <div class="thread-date">Пример диалога</div>
+              <div class="human-message"><span class="message-label">Собеседник</span><p id="question">Можешь помочь с задачей?</p></div>
+              <div class="answer-block"><div class="answer-label"><svg aria-hidden="true"><use href="#twin-mark"/></svg><span>Двойник</span></div><p id="answer">да, пришли условие — посмотрю</p><textarea id="editAnswer" class="hidden" aria-label="Исправленный ответ" rows="3"></textarea><div class="feedback"><button id="likeAnswer">Похоже</button><button id="editButton" class="secondary">Исправить</button><button id="saveAnswer" class="hidden">Сохранить исправление</button></div><p id="feedbackStatus" class="feedback-status" role="status"></p></div>
+            </div>
+            <div class="example-prompts" aria-label="Примеры сообщений"><button data-prompt="Можешь помочь с задачей?">Можешь помочь?</button><button data-prompt="Пойдём сегодня гулять?">Пойдём гулять?</button><button data-prompt="Как у тебя дела?">Как дела?</button></div>
+            <form id="chatForm" class="composer"><label for="chatText">Сообщение двойнику</label><textarea id="chatText" placeholder="Выбери пример или напиши сообщение…" rows="2"></textarea><div><span>Ответы подготовлены для демонстрации</span><button type="submit" id="sendButton">Отправить <span aria-hidden="true">↑</span></button></div></form>
+            <p class="demo-footnote">Демонстрационные данные сбросятся после обновления страницы.</p>
+          </div>
+          <aside class="context"><span class="context-caption">Твоя манера</span><h2>Учится на твоих примерах</h2><p>В полном проекте используются переписки, твои ответы и подтверждённые исправления.</p><div><strong>Переписки</strong><span>Реальные диалоги</span></div><div><strong>Твои ответы</strong><span>Реакции на ситуации</span></div><div><strong>Правила речи</strong><span>Тон и привычные слова</span></div><a href="../projects/iidouble/">Что уже работает</a></aside>
+        </section>
+        <section id="view-people" class="view" aria-labelledby="peopleTitle"><div class="settings-copy"><h2 id="peopleTitle">С кем говорит двойник</h2><p>Для каждого собеседника — отдельный контекст и свои примеры общения.</p><div class="people-options"><button data-person="friend" aria-pressed="true"><strong>Друг</strong><span>Проще, короче, без формальностей</span></button><button data-person="colleague" aria-pressed="false"><strong>Коллега</strong><span>Спокойный деловой тон</span></button></div><div class="person-preview"><span class="message-label">Сообщение</span><p>Можешь помочь с задачей?</p><span class="message-label">Ответ двойника</span><p id="personPreview">да, пришли условие — посмотрю</p></div><button id="usePerson">Открыть диалог</button></div></section>
+        <section id="view-rules" class="view" aria-labelledby="rulesTitle"><div class="settings-copy"><h2 id="rulesTitle">Как ты обычно отвечаешь</h2><p>Постоянные правила помогают передать твою манеру общения.</p><form id="rulesForm"><label for="speechRules">Правила речи</label><textarea id="speechRules" rows="5">С друзьями пиши проще и со строчной буквы. Отвечай коротко. Не добавляй лишних эмодзи.</textarea><button type="submit">Сохранить правила</button><p id="rulesStatus" role="status"></p></form><div class="rules-note"><h3>Исправления тоже важны</h3><p>В диалоге можно заменить ответ своим вариантом. В рабочем проекте подтверждённые исправления становятся примерами для двойника.</p></div></div></section>
+      </div>
+      <nav class="mobile-nav" aria-label="Разделы"><button data-view="chat" aria-current="page">Диалог</button><button data-view="people">Собеседники</button><button data-view="rules">Манера</button></nav>
+    </main>
+  </div>
+</body>
+</html>

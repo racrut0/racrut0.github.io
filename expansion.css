@@ -1,0 +1,97 @@
+/* Case studies and new work keep the portfolio's original type and palette. */
+.showcase-tabs{flex-wrap:wrap}
+.showcase-tabs button{font-size:15px}
+.project-catalogs{margin-bottom:65px;border-bottom:1px solid var(--line)}
+.project-website{grid-template-columns:.78fr 1.15fr}
+.project-design{grid-template-columns:1.15fr .78fr;margin-bottom:0;border-bottom:0}
+.website-stage,.website-visual{position:relative;background:#e7e1ef;overflow:hidden}
+.website-stage{height:354px}
+.website-visual{min-height:460px;align-self:stretch}
+.website-screen{position:absolute;width:91%;left:4.5%;top:44px;border:1px solid #d9d1e4;border-radius:8px;box-shadow:0 17px 38px #33283d20}
+.website-phone{position:absolute;width:23%;max-width:145px;right:6%;bottom:18px;border:4px solid #413a4d;border-radius:16px;box-shadow:0 11px 24px #33283d27}
+.website-visual .website-screen{top:68px}
+.website-visual .website-phone{bottom:40px}
+.design-visual{min-height:480px;background:#eae8e0;align-self:stretch}
+.design-visual img{position:absolute;box-shadow:0 12px 30px #302b3d26}
+.design-preview-menu{width:38%;top:34px;left:8%;transform:rotate(-7deg)}
+.design-preview-card{width:34%;top:62px;right:9%;transform:rotate(6deg)}
+.design-preview-slide{width:68%;left:15%;bottom:65px;transform:rotate(-2deg);border:1px solid #bab5c4;border-radius:4px}
+.design-visual .visual-action{z-index:2}
+
+.case-page{max-width:1160px;padding-top:28px}
+.case-intro{padding-bottom:50px;max-width:940px}
+.case-eyebrow{display:block;font-size:16px;color:var(--muted);margin-bottom:16px}
+.case-intro h1{font-size:clamp(44px,5.7vw,72px);line-height:1.06;overflow-wrap:break-word}
+.case-lead{font-size:clamp(28px,3.2vw,42px);line-height:1.2;letter-spacing:-.04em;margin-top:24px}
+.case-intro-text{font-size:20px;line-height:1.8;color:var(--muted);max-width:790px;margin-top:25px}
+.case-intro .project-actions{margin-top:29px}
+.case-intro .catalog-jumps{margin-top:31px}
+.case-cover{padding:34px;border-radius:15px;background:#e8e2f0}
+.case-cover>img{width:100%;border-radius:7px;box-shadow:0 12px 35px #302b3d20}
+.case-cover figcaption,.case-screen-pair figcaption,.video-grid figcaption,.product-card-grid figcaption,.slide-grid figcaption{font-size:16px;line-height:1.6;color:var(--muted);margin-top:14px}
+.dark-cover{background:#e3deec}
+.case-facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin:45px 0 0;padding-bottom:45px;border-bottom:1px solid var(--line)}
+.case-facts dt{font-size:18px;font-weight:500;margin-bottom:11px}
+.case-facts dd{font-size:18px;line-height:1.85;color:var(--muted);margin:0}
+.case-section{padding:58px 0;border-bottom:1px solid var(--line)}
+.case-section-heading{display:grid;grid-template-columns:.5fr 1fr;gap:30px;align-items:start;margin-bottom:35px}
+.case-section-heading>span{font-size:16px;color:var(--muted);padding-top:7px}
+.case-section h2,.design-entry h2,.case-contact h2{font-size:clamp(32px,3.6vw,46px)}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:35px 60px}
+.feature-list>div{padding-top:21px;border-top:1px solid var(--line)}
+.feature-list h3,.case-prose h3,.demo-callout h3,.status-section h3{font-size:24px;line-height:1.25}
+.feature-list p,.case-prose p,.demo-callout p,.status-section p{font-size:18px;line-height:1.85;color:var(--muted);margin-top:14px}
+.case-screen-pair{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:55px;align-items:center}
+.case-screen-pair>figure{min-width:0}
+.case-screen-pair img{width:100%;border:1px solid var(--line);border-radius:8px}
+.case-screen-pair .mobile-shot{max-width:260px;width:100%;margin-inline:auto}
+.case-prose h3:not(:first-child){margin-top:30px}
+.demo-callout{display:flex;align-items:center;justify-content:space-between;gap:40px;background:#eee9f5;padding:30px;border-radius:12px}
+.demo-callout>div{max-width:720px}
+.demo-callout .button{flex-shrink:0}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}
+.video-grid figure{min-width:0}
+.video-grid video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:10px;background:#1e1f28}
+.status-section{display:grid;grid-template-columns:1.1fr .9fr;gap:70px}
+.status-section h2{margin-top:9px}
+.status-section .inline-link{display:inline-block;margin-top:20px}
+.case-contact{display:flex;align-items:center;justify-content:space-between;gap:35px;padding:52px 0 64px}
+.case-contact p{color:var(--muted);font-size:18px;margin-top:18px}
+.case-contact .button{flex-shrink:0}
+.design-entry{border-top:1px solid var(--line);padding:46px 0 56px}
+.design-entry-heading{display:grid;grid-template-columns:1fr auto;gap:45px;align-items:start;margin-bottom:30px}
+.design-entry-heading>div:first-child{max-width:750px;min-width:0}
+.design-entry-heading p{font-size:18px;line-height:1.85;color:var(--muted);margin-top:20px}
+.download-actions{display:flex;align-items:flex-start;flex-direction:column;gap:17px;padding-top:5px;max-width:280px}
+.download-actions>span{font-size:15px;line-height:1.7;color:var(--muted)}
+.presentation-cover{border-radius:12px;overflow:hidden;background:#1e1f28}
+.presentation-cover img{width:100%;height:auto}
+.extra-pages{margin-top:25px;border:1px solid var(--line);border-radius:10px;background:white}
+.extra-pages>summary{padding:17px 22px;cursor:pointer;font-size:17px;font-weight:500;color:var(--accent)}
+.extra-pages>summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:8px}
+.extra-pages[open]>summary{border-bottom:1px solid var(--line)}
+.slide-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;padding:25px}
+.slide-grid figure{min-width:0}
+.slide-grid img{width:100%;border-radius:5px}
+.case-small-note{font-size:16px;line-height:1.8;color:var(--muted);margin-top:24px;max-width:850px}
+.menu-showcase{display:grid;grid-template-columns:minmax(0,1.1fr) .9fr;align-items:center;gap:65px;background:#efede6;padding:38px;border-radius:13px}
+.menu-showcase img{width:100%;box-shadow:0 12px 30px #25312b21}
+.menu-showcase .case-prose p{max-width:410px}
+.product-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.product-card-grid img{width:100%;border:1px solid #e3e2da;border-radius:9px}
+.catalog-viewing-note{font-size:16px;color:var(--muted);max-width:770px;margin-top:23px}
+.extra-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;padding:25px;background:#f1eff4}
+.extra-page-grid img{width:100%;height:auto;box-shadow:0 8px 22px #302b3d17}
+.extra-page-grid figcaption{font-size:16px;color:var(--muted);margin-top:12px}
+.catalog-entry-heading .pdf-actions{max-width:540px;flex-shrink:1}
+.catalog-entry-heading .pdf-links{align-items:center;gap:10px 18px}
+.pdf-actions>span{font-size:15px}
+.showcase-tabs button{padding-inline:10px}
+
+@media(min-width:1450px){.website-stage{height:375px}}
+@media(max-width:1100px){.website-stage{height:315px}.website-visual{min-height:440px}.design-visual{min-height:430px}.design-preview-slide{bottom:70px}.case-section-heading{grid-template-columns:.4fr 1fr}.case-facts{gap:26px}.design-entry-heading{grid-template-columns:1fr;gap:22px}.download-actions{max-width:none;flex-direction:row;align-items:center;flex-wrap:wrap;gap:18px 24px}.download-actions>span{max-width:360px}.menu-showcase{gap:35px;padding:28px}}
+@media(max-width:900px){.project-website,.project-design{grid-template-columns:1fr}.project-design .project-copy{grid-row:1}.website-visual{min-height:420px;aspect-ratio:1.5}.website-visual .website-screen{top:35px;max-width:85%}.website-visual .website-phone{bottom:24px;max-width:140px}.design-visual{min-height:440px;aspect-ratio:1.5}.design-preview-menu{width:30%;left:15%}.design-preview-card{width:27%;right:16%}.design-preview-slide{width:55%;left:23%;bottom:55px}.case-facts{grid-template-columns:1fr}.case-section-heading{grid-template-columns:1fr;gap:15px}.case-screen-pair{gap:30px;grid-template-columns:minmax(0,1fr) 220px}.demo-callout{flex-direction:column;align-items:flex-start;gap:25px}.status-section{gap:40px}.product-card-grid{gap:17px}}
+@media(max-width:850px) and (min-width:701px){.website-stage{height:280px}.showcase-tabs button{font-size:14px;padding-inline:8px}}
+@media(max-width:700px){.project-catalogs{margin-bottom:38px}.project-design{margin-bottom:0}.website-stage{height:315px}.website-visual{min-height:330px;aspect-ratio:1.15}.website-visual .website-screen{top:38px;max-width:none}.website-visual .website-phone{bottom:20px;width:27%;max-width:145px}.website-stage .website-phone{width:25%;bottom:3px}.website-stage .website-screen{top:42px}.design-visual{min-height:350px;aspect-ratio:1.15}.design-preview-menu{width:37%;left:7%;top:26px}.design-preview-card{width:34%;right:8%;top:48px}.design-preview-slide{width:70%;left:14%;bottom:57px}.case-page{padding-top:18px}.case-intro{padding-bottom:32px}.case-intro h1{font-size:44px}.case-eyebrow{font-size:15px;margin-bottom:13px}.case-lead{font-size:30px;margin-top:19px}.case-intro-text{font-size:18px;margin-top:22px}.case-intro .project-actions{gap:19px}.case-cover{padding:16px;border-radius:11px}.case-cover figcaption{font-size:14px;line-height:1.8;margin-top:14px}.case-facts{margin-top:31px;padding-bottom:31px;gap:23px}.case-facts dt{margin-bottom:6px}.case-facts dd{font-size:17px}.case-section{padding:35px 0}.case-section-heading{gap:13px;margin-bottom:25px}.case-section-heading>span{font-size:15px;padding-top:0}.case-section h2,.design-entry h2,.case-contact h2{font-size:33px}.feature-list{grid-template-columns:1fr;gap:23px}.feature-list h3,.case-prose h3,.demo-callout h3,.status-section h3{font-size:23px}.feature-list p,.case-prose p,.demo-callout p,.status-section p{font-size:17px;margin-top:12px}.case-screen-pair{grid-template-columns:1fr;gap:30px}.case-screen-pair .mobile-shot{max-width:250px}.case-screen-pair figcaption{font-size:15px}.demo-callout{padding:23px;gap:22px}.video-grid{grid-template-columns:1fr;gap:28px;margin-top:25px}.video-grid figcaption{font-size:15px}.status-section{grid-template-columns:1fr;gap:30px}.case-contact{flex-direction:column;align-items:flex-start;gap:24px;padding:37px 0 43px}.case-contact p{font-size:17px;margin-top:14px}.design-entry{padding:32px 0 37px}.design-entry-heading{gap:21px;margin-bottom:24px}.design-entry-heading p{font-size:17px;margin-top:17px}.download-actions{gap:15px 21px}.download-actions>span{font-size:14px}.slide-grid{grid-template-columns:1fr;padding:16px;gap:22px}.slide-grid figcaption{font-size:15px}.extra-pages{margin-top:20px}.extra-pages>summary{padding:15px 17px;font-size:16px}.menu-showcase{grid-template-columns:1fr;gap:30px;padding:20px}.menu-showcase figure{max-width:500px;margin-inline:auto}.menu-showcase .case-prose p{max-width:none}.case-small-note{font-size:15px;margin-top:21px}.product-card-grid{grid-template-columns:1fr;gap:26px}.product-card-grid figure{max-width:450px;margin-inline:auto;width:100%}.product-card-grid figcaption{font-size:16px}.extra-page-grid{grid-template-columns:1fr;gap:22px;padding:17px}.catalog-viewing-note{font-size:16px}.catalog-entry-heading .pdf-actions{max-width:100%}.pdf-links{gap:12px 18px}.pdf-links .button{font-size:15px}.catalog-cover-link{font-size:16px}.pdf-actions>span{font-size:14px}}
+@media(max-width:360px){.showcase-tabs button{font-size:14px;padding-inline:9px}.website-stage{height:278px}.website-visual{min-height:285px}.design-visual{min-height:310px}.case-intro h1{font-size:38px}.case-lead{font-size:27px}.case-section h2,.design-entry h2,.case-contact h2{font-size:30px}.case-cover{padding:12px}.menu-showcase{padding:15px}.demo-callout{padding:19px}}
+@media(max-width:700px){.showcase-tabs{gap:4px;padding-inline:0}.showcase-tabs button{font-size:14px;padding-inline:7px}}
