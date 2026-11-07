@@ -1,113 +1,66 @@
-const tabs = [...document.querySelectorAll('[data-preview]')];
-const panels = [...document.querySelectorAll('.preview-panel')];
+'use strict';
 
-function selectPreview(tab, moveFocus = false) {
-  tabs.forEach(item => {
-    const selected = item === tab;
-    item.setAttribute('aria-selected', String(selected));
-    item.tabIndex = selected ? 0 : -1;
-  });
-  panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
-  if (moveFocus) tab.focus();
-}
+const filterButtons=[...document.querySelectorAll('[data-filter]')];
+const workItems=[...document.querySelectorAll('[data-work-kind]')];
+filterButtons.forEach(button=>button.addEventListener('click',()=>{
+  const kind=button.dataset.filter;
+  filterButtons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  workItems.forEach(item=>{item.hidden=kind!=='all'&&item.dataset.workKind!==kind});
+  const status=document.querySelector('#filter-status');
+  if(status)status.textContent=kind==='all'?'Показаны все 4 проекта.':`Показано проектов: ${workItems.filter(item=>!item.hidden).length}.`;
+}));
 
-tabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => selectPreview(tab));
-  tab.addEventListener('keydown', event => {
-    let next;
-    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-    if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
-    if (event.key === 'Home') next = 0;
-    if (event.key === 'End') next = tabs.length - 1;
-    if (next !== undefined) {
-      event.preventDefault();
-      selectPreview(tabs[next], true);
-    }
-  });
-});
-
-const projectDialog = document.querySelector('#project-dialog');
-let dialogTrigger;
-document.querySelectorAll('[data-case-open]').forEach(button => {
-  button.addEventListener('click', () => {
-    dialogTrigger = button;
-    projectDialog.showModal();
-    projectDialog.scrollTop = 0;
-    document.body.classList.add('dialog-open');
-    projectDialog.querySelector('.dialog-close').focus();
-  });
-});
-projectDialog.querySelector('.dialog-close').addEventListener('click', () => projectDialog.close());
-projectDialog.addEventListener('click', event => {
-  if (event.target !== projectDialog) return;
-  const rect = projectDialog.getBoundingClientRect();
-  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) projectDialog.close();
-});
-projectDialog.addEventListener('close', () => {
-  document.body.classList.remove('dialog-open');
-  dialogTrigger?.focus({preventScroll:true});
-});
-
-const preparationByTopic = {
-  website: {
-    title: 'Для сайта пригодятся',
-    materials: [
-      'Что нужно рассказать о проекте или услуге.',
-      'Тексты, фотографии и примеры сайтов, которые нравятся.',
-      'Какие страницы нужны и к какому сроку.'
-    ]
-  },
-  updates: {
-    title: 'Для доработки пригодятся',
-    materials: [
-      'Ссылка на сайт и список нужных изменений.',
-      'Скриншот или пример того, как должно выглядеть.',
-      'Информация о платформе сайта, если она известна.'
-    ]
-  },
-  bot: {
-    title: 'Для бота пригодятся',
-    materials: [
-      'Кому помогает бот и какую задачу решает.',
-      'Пример диалога: что пишет человек и что отвечает бот.',
-      'Нужные кнопки, команды и желаемый срок.'
-    ]
-  },
-  catalog: {
-    title: 'Для каталога пригодятся',
-    materials: [
-      'Список товаров, цены и характеристики.',
-      'Фотографии, логотип и пример оформления.',
-      'Примерный объём каталога и желаемый срок.'
-    ]
-  },
-  presentation: {
-    title: 'Для презентации пригодятся',
-    materials: ['Текст, структура или черновик слайдов.', 'Логотип, фотографии и пример желаемого стиля.', 'Количество слайдов, формат исходника и желаемый срок.']
-  },
-  design: {
-    title: 'Для оформления пригодятся',
-    materials: ['Список позиций или характеристики товара.', 'Фотографии, тексты, цены и фирменные материалы.', 'Размеры макета, формат файлов и пример оформления.']
+document.querySelectorAll('[data-gallery]').forEach(gallery=>{
+  const slides=[...gallery.querySelectorAll(':scope > [data-slide]')];
+  const previous=gallery.querySelector('[data-gallery-prev]');
+  const next=gallery.querySelector('[data-gallery-next]');
+  const count=gallery.querySelector('[data-gallery-count]');
+  const compact=gallery.hasAttribute('data-gallery-mobile')?window.matchMedia('(max-width:650px)'):null;
+  let index=0;
+  function show(nextIndex){
+    index=(nextIndex+slides.length)%slides.length;
+    slides.forEach((slide,i)=>{slide.hidden=(!compact||compact.matches)&&i!==index});
+    count.textContent=`${index+1} из ${slides.length}`;
   }
-};
-const contactTopicButtons = [...document.querySelectorAll('[data-contact-topic]')];
-function selectContactTopic(topic) {
-  const preparation = preparationByTopic[topic];
-  if (!preparation) return;
-  contactTopicButtons.forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.contactTopic === topic));
+  previous.addEventListener('click',()=>show(index-1));
+  next.addEventListener('click',()=>show(index+1));
+  gallery.addEventListener('keydown',event=>{
+    if(compact&&!compact.matches)return;
+    if(event.key==='ArrowLeft'){event.preventDefault();show(index-1)}
+    if(event.key==='ArrowRight'){event.preventDefault();show(index+1)}
+    if(event.key==='Home'){event.preventDefault();show(0)}
+    if(event.key==='End'){event.preventDefault();show(slides.length-1)}
   });
-  document.querySelector('#preparation-title').textContent = preparation.title;
-  const list = document.querySelector('#preparation-list');
-  list.replaceChildren(...preparation.materials.map(text => {
-    const item = document.createElement('li');
-    item.textContent = text;
-    return item;
-  }));
-}
-contactTopicButtons.forEach(button => {
-  button.addEventListener('click', () => selectContactTopic(button.dataset.contactTopic));
+  if(compact)compact.addEventListener('change',()=>show(index));
+  gallery.classList.add('is-ready');show(0);
 });
-document.querySelectorAll('[data-topic-link]').forEach(link => {
-  link.addEventListener('click', () => selectContactTopic(link.dataset.topicLink));
+
+document.querySelectorAll('[data-switcher]').forEach(group=>{
+  const links=[...group.querySelectorAll(':scope > .folder-nav [data-switch-link]')];
+  const panels=[...group.querySelectorAll(':scope > [data-switch-panel]')];
+  function fromHash(){try{return decodeURIComponent(location.hash.slice(1))}catch{return ''}}
+  function show(id,changeAddress=false){
+    const panel=panels.find(item=>item.id===id)||panels[0];
+    panels.forEach(item=>{item.hidden=item!==panel;item.classList.toggle('is-active',item===panel)});
+    links.forEach(link=>{if(link.dataset.switchLink===panel.id)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
+    if(changeAddress)history.replaceState(null,'',`#${panel.id}`);
+  }
+  links.forEach(link=>link.addEventListener('click',event=>{
+    if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    event.preventDefault();show(link.dataset.switchLink,true);
+  }));
+  const initial=fromHash();show(initial);
+  if(panels.some(item=>item.id===initial))requestAnimationFrame(()=>group.querySelector('.folder-nav').scrollIntoView({block:'start'}));
+  window.addEventListener('hashchange',()=>{const id=fromHash();if(panels.some(item=>item.id===id))show(id)});
+});
+
+document.querySelectorAll('[data-device-example]').forEach(example=>{
+  const buttons=[...example.querySelectorAll('[data-device]')];
+  const panels=[...example.querySelectorAll('[data-device-panel]')];
+  function show(device){
+    buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.device===device)));
+    panels.forEach(panel=>{panel.hidden=panel.dataset.devicePanel!==device});
+  }
+  buttons.forEach(button=>button.addEventListener('click',()=>show(button.dataset.device)));
+  show('desktop');
 });
