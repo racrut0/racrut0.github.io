@@ -4,6 +4,7 @@ const filterButtons=[...document.querySelectorAll('[data-filter]')];
 const workItems=[...document.querySelectorAll('[data-work-kind]')];
 filterButtons.forEach(button=>button.addEventListener('click',()=>{
   const kind=button.dataset.filter;
+  document.querySelector('.work-grid')?.classList.toggle('is-filtered',kind!=='all');
   filterButtons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
   workItems.forEach(item=>{item.hidden=kind!=='all'&&item.dataset.workKind!==kind});
   const status=document.querySelector('#filter-status');
